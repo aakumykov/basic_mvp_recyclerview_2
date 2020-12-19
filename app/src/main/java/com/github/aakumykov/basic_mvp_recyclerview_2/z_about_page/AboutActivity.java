@@ -1,11 +1,11 @@
-package com.github.aakumykov.basic_mvp_recyclerview_2.start_page;
+package com.github.aakumykov.basic_mvp_recyclerview_2.z_about_page;
 
 import android.os.Bundle;
 
-import com.github.aakumykov.basic_mvp_recyclerview_2.BMVP_BasicActivity;
 import com.github.aakumykov.basic_mvp_recyclerview_2.R;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.basic_activity.BMVP_Activity;
 
-public class AboutActivity extends BMVP_BasicActivity {
+public class AboutActivity extends BMVP_Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

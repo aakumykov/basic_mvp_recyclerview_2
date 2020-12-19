@@ -12,7 +12,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.adapter_utils.BasicMVPList_ViewHolderCreator;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.adapter_utils.BasicMVPList_ViewTypeDetector;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicList;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_ListView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicMVP_ItemClickListener;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iItemsComparator;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
@@ -31,7 +31,7 @@ import java.util.ListIterator;
 
 public abstract class BasicMVPList_DataAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-        implements iBasicList
+        implements iBMVP_ListView
 {
     private boolean mIsVirgin = true;
     private boolean mIsSorted = false;

@@ -12,7 +12,8 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 
 import java.util.List;
 
-public interface iBasicList extends iBasicFilterableLsit, iBasicSelectableList
+public interface iBMVP_ListView extends
+        iBasicFilterableLsit, iBasicSelectableList
 {
     boolean isVirgin();
 

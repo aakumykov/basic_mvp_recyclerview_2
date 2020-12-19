@@ -42,10 +42,10 @@
             android:layout_weight="1"
             android:padding="4dp"
             android:paddingStart="8dp"
+            android:text="Exception in thread main, java.lang.NullPointerException at com.example.myproject.Book.getTitle(Book.java:16) at com.example.myproject.Author.getBookTitles(Author.java:25) at com.example.myproject.Bootstrap.main(Bootstrap.java:14)"
             android:textColor="@color/stackTraceColor"
             android:textSize="16sp"
-            android:visibility="visible"
-            android:text="Exception in thread main, java.lang.NullPointerException at com.example.myproject.Book.getTitle(Book.java:16) at com.example.myproject.Author.getBookTitles(Author.java:25) at com.example.myproject.Bootstrap.main(Bootstrap.java:14)"
+            android:visibility="gone"
             tools:visibility="visible" />
 
     </LinearLayout>

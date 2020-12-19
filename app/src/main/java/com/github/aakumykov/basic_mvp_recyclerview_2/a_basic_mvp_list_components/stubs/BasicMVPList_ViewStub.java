@@ -5,14 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicList_Page;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.basic_activity.BMVP_ActivityStub;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_PageView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 
-public class BasicMVPList_ViewStub implements iBasicList_Page {
+public class BasicMVPList_ViewStub extends BMVP_ActivityStub implements iBMVP_PageView {
 
     @Override
     public void setDefaultPageTitle() {
@@ -30,62 +30,12 @@ public class BasicMVPList_ViewStub implements iBasicList_Page {
     }
 
     @Override
-    public RecyclerView.ItemDecoration createItemDecoration(BasicViewMode viewMode) {
+    public RecyclerView.ItemDecoration createBasicItemDecoration(BasicViewMode viewMode) {
         return null;
     }
 
     @Override
-    public void setPageTitle(int titleId) {
-
-    }
-
-    @Override
-    public void setPageTitle(int titleId, Object... substitutedData) {
-
-    }
-
-    @Override
-    public void setPageTitle(String title) {
-
-    }
-
-    @Override
-    public void activateUpButton() {
-
-    }
-
-    @Override
     public void setViewState(iBasicViewState viewState) {
-
-    }
-
-    @Override
-    public void showToast(int messageId) {
-
-    }
-
-    @Override
-    public void showToast(String text) {
-
-    }
-
-    @Override
-    public void showSnackbar(int msgId, int dismissStringResourceId) {
-
-    }
-
-    @Override
-    public void showSnackbar(int msgId, int dismissStringResourceId, @Nullable Integer duration) {
-
-    }
-
-    @Override
-    public void showSnackbar(String text, int dismissStringResourceId) {
-
-    }
-
-    @Override
-    public void showSnackbar(String text, int dismissStringResourceId, @Nullable Integer duration) {
 
     }
 

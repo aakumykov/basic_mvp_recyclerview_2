@@ -24,5 +24,6 @@
     <string name="menu_login">Login</string>
     <string name="menu_interrupt">Abort</string>
     <string name="menu_interrupt_running_action">Abort running action</string>
+    <string name="SIMPLE_LIST_default_page_title">Simple list</string>
 
 </resources>

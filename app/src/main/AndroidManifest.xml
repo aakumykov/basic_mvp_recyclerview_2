@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Basicmvprecyclerview2">
 
-        <activity android:name=".about_page.StartingActivity">
+        <activity android:name=".z_start_page.StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".start_page.AboutActivity" android:parentActivityName=".about_page.StartingActivity" />
+        <activity android:name=".z_about_page.AboutActivity"
+            android:parentActivityName=".z_start_page.StartingActivity" />
+
+        <activity android:name=".b_simple_list.SimpleList_View"
+            android:parentActivityName=".z_start_page.StartingActivity"
+            android:exported="true" />
+
+
 
     </application>
 

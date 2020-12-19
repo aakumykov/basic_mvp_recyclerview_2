@@ -5,16 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 
-public interface iBasicList_Page {
-
-    void setPageTitle(int titleId);
-    void setPageTitle(int titleId, Object... substitutedData);
-    void setPageTitle(String title);
+public interface iBMVP_PageView extends iBMVP_Activity {
 
     void setDefaultPageTitle();
 
@@ -22,17 +17,7 @@ public interface iBasicList_Page {
 
     void assembleMenu();
 
-    RecyclerView.ItemDecoration createItemDecoration(BasicViewMode viewMode);
-
-    void showToast(int messageId);
-    void showToast(String message);
-
-    void showSnackbar(int msgId, int dismissStringResourceId);
-    void showSnackbar(int msgId, int dismissStringResourceId, @Nullable Integer duration);
-    void showSnackbar(String text, int dismissStringResourceId);
-    void showSnackbar(String text, int dismissStringResourceId, @Nullable Integer duration);
-
-    void activateUpButton();
+    RecyclerView.ItemDecoration createBasicItemDecoration(BasicViewMode viewMode);
 
     void setViewState(iBasicViewState viewState);
 
@@ -53,5 +38,4 @@ public interface iBasicList_Page {
 
     int getListScrollOffset();
     void setListScrollOffset(int offset);
-
 }

@@ -17,11 +17,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,20 +28,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.github.aakumykov.basic_mvp_recyclerview_2.BMVP_BasicActivity;
 import com.github.aakumykov.basic_mvp_recyclerview_2.BuildConfig;
 import com.github.aakumykov.basic_mvp_recyclerview_2.R;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.basic_activity.BMVP_Activity;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eBasicSortingMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.exceptions.UnknownViewModeException;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicList_Page;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_PageView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.system_config.ActivityCodes;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.BasicMVPList_Utils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.DeviceUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.RecyclerViewUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.TextUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.ViewUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.builders.SortingMenuItem;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_config.GridViewConfig;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_model.BasicMVPList_ViewModel;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_model.BasicMVPList_ViewModelFactory;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
@@ -62,11 +62,10 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import butterknife.BindView;
 
 public abstract class BasicMVPList_View
-        extends BMVP_BasicActivity
-        implements iBasicList_Page
+        extends BMVP_Activity
+        implements iBMVP_PageView
 {
-    @Nullable @BindView(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout swipeRefreshLayout;
+    @Nullable @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.progressBar) ProgressBar progressBar;
     @BindView(R.id.messageView) TextView messageView;
 
@@ -213,36 +212,10 @@ public abstract class BasicMVPList_View
     public abstract void setDefaultPageTitle();
 
     @Override
-    public RecyclerView.ItemDecoration createItemDecoration(BasicViewMode viewMode) {
+    public RecyclerView.ItemDecoration createBasicItemDecoration(BasicViewMode viewMode) {
         if (viewMode instanceof ListViewMode)
             return RecyclerViewUtils.createSimpleDividerItemDecoration(this, R.drawable.simple_list_item_divider);
         return null;
-    }
-
-    @Override
-    public void setPageTitle(int titleId) {
-        String title = getString(titleId);
-        setPageTitle(title);
-    }
-
-    @Override
-    public void setPageTitle(int titleId, Object... formatArguments) {
-        String title = getResources().getString(titleId, formatArguments);
-        setPageTitle(title);
-    }
-
-    @Override
-    public void setPageTitle(String title) {
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar)
-            actionBar.setTitle(title);
-    }
-
-    @Override
-    public void activateUpButton() {
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar)
-            actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -280,16 +253,6 @@ public abstract class BasicMVPList_View
     private void setListFilteredViewState(ListFilteredViewState listFilteredViewState) {
 //        setNeutralViewState();
         restoreSearchView(listFilteredViewState.getFilterText());
-    }
-
-    @Override
-    public void showToast(int messageId) {
-        showToast(getString(messageId));
-    }
-
-    @Override
-    public void showToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -394,8 +357,8 @@ public abstract class BasicMVPList_View
 
     protected int getColumnsCountForGridLayout(int orientation) {
         return (Configuration.ORIENTATION_PORTRAIT == orientation) ?
-                AppConfig.GRID_COLUMNS_COUNT_PORTRAIT :
-                AppConfig.GRID_COLUMNS_COUNT_LANDSCAPE;
+                GridViewConfig.GRID_COLUMNS_COUNT_PORTRAIT :
+                GridViewConfig.GRID_COLUMNS_COUNT_LANDSCAPE;
     }
 
     protected RecyclerView.LayoutManager createLinearModeLayoutManager() {
@@ -708,13 +671,14 @@ public abstract class BasicMVPList_View
     }
 
     private void showSelectedItemsCount(Object viewStateData) {
-        setPageTitle(R.string.page_title_selected_items_count, viewStateData);
+        String title = getString(R.string.page_title_selected_items_count, (Integer) viewStateData);
+        BMVP_setPageTitle(title);
     }
 
     private void showInterruptButton() {
         clearMenu();
         inflateMenu(R.menu.progress_interrupt);
-        setPageTitle(R.string.menu_interrupt);
+        BMVP_setPageTitle(R.string.menu_interrupt);
     }
 
     private void forgetActivityResult() {
@@ -723,16 +687,23 @@ public abstract class BasicMVPList_View
         mActivityResultData = null;
     }
 
-    private void clearMenu() {
+    protected void clearMenu() {
         if (null != mMenu)
             mMenu.clear();
     }
 
-    private void inflateMenu(int menuResourceId) {
+    protected void inflateMenu(int menuResourceId) {
         if (null != mMenuInflater && null != mMenu)
             mMenuInflater.inflate(menuResourceId, mMenu);
     }
 
+    protected void makeMenuItemVisible(int menuItemId) {
+        if (null != mMenu) {
+            MenuItem menuItem = mMenu.findItem(menuItemId);
+            if (null != menuItem)
+                menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }
+    }
 
 
     @SuppressLint("RestrictedApi")

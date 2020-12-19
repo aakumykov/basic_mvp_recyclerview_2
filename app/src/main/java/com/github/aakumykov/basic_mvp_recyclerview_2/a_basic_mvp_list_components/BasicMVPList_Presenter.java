@@ -4,8 +4,8 @@ package com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_component
 import androidx.annotation.NonNull;
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicList;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicList_Page;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_ListView;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_PageView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicMVP_ItemClickListener;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSearchViewListener;
@@ -32,8 +32,8 @@ public abstract class BasicMVPList_Presenter
 {
     private static final String TAG = BasicMVPList_Presenter.class.getSimpleName();
 
-    protected iBasicList_Page mPageView;
-    protected iBasicList mListView;
+    protected iBMVP_PageView mPageView;
+    protected iBMVP_ListView mListView;
 
     protected BasicViewMode mCurrentViewMode;
     protected iBasicViewState mCurrentViewState;
@@ -49,7 +49,7 @@ public abstract class BasicMVPList_Presenter
         mCurrentSortingOrder = getDefaultSortingOrderForSortingMode(mCurrentSortingMode);
     }
 
-    public void bindViews(iBasicList_Page pageView, iBasicList listView) {
+    public void bindViews(iBMVP_PageView pageView, iBMVP_ListView listView) {
         mPageView = pageView;
         mListView = listView;
     }
