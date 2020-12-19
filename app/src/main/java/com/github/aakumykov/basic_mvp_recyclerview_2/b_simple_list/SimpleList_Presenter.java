@@ -10,7 +10,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_ViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem.SimpleListItem;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
 
 import java.util.ArrayList;
@@ -81,7 +81,6 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             @Override
             public void run() {
                 setNeutralViewState();
-
                 mListView.setList(createStringsList(2, 10));
             }
         }, 1000);
@@ -98,6 +97,6 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             list.add(new SimpleListItem(title));
         }
 
-        return null;
+        return list;
     }
 }

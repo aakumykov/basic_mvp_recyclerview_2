@@ -9,8 +9,13 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iItemsComparator;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewHolderBinder;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewHolderCreator;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewTypeDetector;
 
 public class SimpleList_Adapter extends BasicMVPList_DataAdapter {
+
+    private iBasicMVP_ItemClickListener mItemClickListener;
 
     public SimpleList_Adapter(BasicViewMode defaultViewMode, iBasicMVP_ItemClickListener itemClickListener) {
         super(defaultViewMode, itemClickListener);
@@ -18,17 +23,17 @@ public class SimpleList_Adapter extends BasicMVPList_DataAdapter {
 
     @Override
     protected BasicMVPList_ViewHolderCreator prepareViewHolderCreator() {
-        return null;
+        return new SimpleList_ViewHolderCreator(mItemClickListener);
     }
 
     @Override
     protected BasicMVPList_ViewHolderBinder prepareViewHolderBinder() {
-        return null;
+        return new SimpleList_ViewHolderBinder();
     }
 
     @Override
     protected BasicMVPList_ViewTypeDetector prepareViewTypeDetector() {
-        return null;
+        return new SimpleList_ViewTypeDetector();
     }
 
     @Override

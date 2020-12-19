@@ -1,4 +1,4 @@
-package com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem;
+package com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items;
 
 import androidx.annotation.NonNull;
 

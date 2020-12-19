@@ -15,4 +15,8 @@
 
     <color name="stackTraceColor">#3F51B5</color>
     <color name="colorErrorText">#EC407A</color>
+    <color name="default_highlighting_background">#43FFFDE7</color>
+    <color name="default_basic_highlighting_border">#FFF9C4</color>
+    <color name="default_checking_background">#4DD1C4E9</color>
+    <color name="default_basic_checking_border">#D1C4E9</color>
 </resources>

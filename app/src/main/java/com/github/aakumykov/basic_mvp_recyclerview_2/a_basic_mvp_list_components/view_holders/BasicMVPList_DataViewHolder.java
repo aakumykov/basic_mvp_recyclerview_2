@@ -11,7 +11,7 @@ public abstract class BasicMVPList_DataViewHolder extends BasicMVPList_ViewHolde
         super(itemView);
     }
 
-    public abstract void displayIsChecked(boolean selected);
+    public abstract void displayIsSelected(boolean selected);
 
     public abstract void displayIsHighlighted(boolean isHighLighted);
 }
