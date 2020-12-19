@@ -19,10 +19,8 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.GridViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.ListViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.AllItemsSelectedViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ErrorViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ItemsSelectedViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
 
 public abstract class BasicMVPList_Presenter
         implements
@@ -56,7 +54,7 @@ public abstract class BasicMVPList_Presenter
 
     public abstract void unbindViews();
 
-    public  void onMenuCreated() {
+    public  void onOptionsMenuCreated() {
         if (isColdStart())
             onColdStart();
         else
@@ -164,18 +162,6 @@ public abstract class BasicMVPList_Presenter
         mPageView.setViewState(viewState);
     }
 
-    protected void setNeutralViewState() {
-        setViewState(new NeutralViewState());
-    }
-
-    protected void setRefreshingViewState() {
-        setViewState(new RefreshingViewState());
-    }
-
-    protected void setErrorViewState(int userMessageId, String debugMessage) {
-        mPageView.setViewState(new ErrorViewState(userMessageId, debugMessage));
-    }
-
     protected void onInterruptRunningProcessClicked() {
         setInterruptFlag();
     }
@@ -275,7 +261,10 @@ public abstract class BasicMVPList_Presenter
     }
 
     private void resetSelection() {
-        mListView.clearSelection();
-        mPageView.refreshMenu();
+        if (mListView.isSelectionMode()) {
+            mListView.clearSelection();
+            mPageView.resetMenu();
+            mPageView.setDefaultPageTitle();
+        }
     }
 }

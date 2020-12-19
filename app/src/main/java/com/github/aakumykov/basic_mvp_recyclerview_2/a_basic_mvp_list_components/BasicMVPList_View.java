@@ -145,9 +145,9 @@ public abstract class BasicMVPList_View
         mMenu = menu;
         mMenuInflater = getMenuInflater();
 
-        activateIconsInMenu(menu);
+        setMenuIconsVisible(menu);
 
-        mPresenter.onMenuCreated();
+        mPresenter.onOptionsMenuCreated();
         return true;
     }
 
@@ -330,6 +330,12 @@ public abstract class BasicMVPList_View
 
     public abstract void assembleMenu();
 
+    @Override
+    public void resetMenu() {
+        clearMenu();
+        assembleMenu();
+    }
+
     public abstract RecyclerView.ItemDecoration prepareItemDecoration(BasicViewMode viewMode);
 
 
@@ -369,8 +375,7 @@ public abstract class BasicMVPList_View
     protected void setNeutralViewState() {
         setDefaultPageTitle();
 
-        clearMenu();
-        assembleMenu();
+        resetMenu();
 
         hideRefreshThrobber();
         hideProgressMessage();
@@ -719,7 +724,7 @@ public abstract class BasicMVPList_View
 
 
     @SuppressLint("RestrictedApi")
-    private void activateIconsInMenu(Menu menu) {
+    private void setMenuIconsVisible(Menu menu) {
         if(menu instanceof MenuBuilder){
             MenuBuilder menuBuilder = (MenuBuilder) menu;
             menuBuilder.setOptionalIconsVisible(true);

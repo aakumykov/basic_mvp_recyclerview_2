@@ -15,27 +15,28 @@ public interface iBMVP_PageView extends iBMVP_Activity {
 
     void runDelayed(@NonNull Runnable runnable, long delay);
 
+    // TODO: кажется, это непубличный метод...
     void assembleMenu();
+    void resetMenu();
+    void refreshMenu();
 
     RecyclerView.ItemDecoration createBasicItemDecoration(BasicViewMode viewMode);
 
     void setViewState(iBasicViewState viewState);
 
-    void refreshMenu();
-
     void restoreSearchView(String filterText);
 
     void scroll2position(int position);
-
     // Эти два здесь неуместны
     Intent getInputIntent();
     Context getAppContext();
+
     Context getPageContext();
 
     String getText(int stringResourceId, Object... formatArgs);
 
     void reconfigureRecyclerView();
-
     int getListScrollOffset();
+
     void setListScrollOffset(int offset);
 }

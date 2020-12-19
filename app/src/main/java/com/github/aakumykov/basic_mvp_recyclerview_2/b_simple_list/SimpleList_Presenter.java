@@ -10,6 +10,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_DataViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_ViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
@@ -86,15 +87,16 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
     }
 
     private void loadList() {
+
         setViewState(new RefreshingViewState());
 
         mPageView.runDelayed(new Runnable() {
             @Override
             public void run() {
-                setNeutralViewState();
+                setViewState(new NeutralViewState());
                 mListView.setList(createStringsList(2, 10));
             }
-        }, 1000);
+        }, 4000);
     }
 
     private void loadMoreItems() {

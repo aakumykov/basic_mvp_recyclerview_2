@@ -30,6 +30,11 @@ public class BasicMVPList_ViewStub extends BMVP_ActivityStub implements iBMVP_Pa
     }
 
     @Override
+    public void resetMenu() {
+
+    }
+
+    @Override
     public RecyclerView.ItemDecoration createBasicItemDecoration(BasicViewMode viewMode) {
         return null;
     }

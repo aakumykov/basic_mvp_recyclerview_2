@@ -77,9 +77,7 @@ public class SimpleList_View extends BasicMVPList_View {
 
     @Override
     public void assembleMenu() {
-        clearMenu();
         addSearchView();
-
         addSortByNameMenu();
         makeMenuItemVisible(R.id.actionSort);
     }
