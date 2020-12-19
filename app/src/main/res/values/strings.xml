@@ -20,5 +20,9 @@
     <string name="menu_view_mode_grid">As grid</string>
     <string name="menu_view_mode_list">As list</string>
     <string name="menu_view_mode_feed">As feed</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_interrupt">Abort</string>
+    <string name="menu_interrupt_running_action">Abort running action</string>
 
 </resources>

@@ -20,5 +20,9 @@
     <string name="menu_view_mode_grid">Сеткой</string>
     <string name="menu_view_mode_list">Списком</string>
     <string name="menu_view_mode_feed">Лентой</string>
+    <string name="menu_logout">Выход</string>
+    <string name="menu_login">Вход</string>
+    <string name="menu_interrupt">Прервать</string>
+    <string name="menu_interrupt_running_action">Прервать действие</string>
 
 </resources>
