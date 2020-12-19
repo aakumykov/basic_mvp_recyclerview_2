@@ -1,14 +1,21 @@
 package com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list;
 
+import com.github.aakumykov.basic_mvp_recyclerview_2.R;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.BasicMVPList_Presenter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_ListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_utils.BasicMVPList_ItemsTextFilter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_DataViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_ViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem.SimpleListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
@@ -74,7 +81,23 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             @Override
             public void run() {
                 setNeutralViewState();
+
+                mListView.setList(createStringsList(2, 10));
             }
         }, 1000);
+    }
+
+    private List<BasicMVPList_ListItem> createStringsList(int minSize, int maxSize) {
+
+        List<BasicMVPList_ListItem> list = new ArrayList<>();
+        Random random = new Random();
+
+        for (int i=0; i<random.nextInt(maxSize)+minSize; i++) {
+            String title = mPageView.getText(R.string.SIMPLE_LIST_list_item_title);
+            title += "-" + random.nextInt(100);
+            list.add(new SimpleListItem(title));
+        }
+
+        return null;
     }
 }

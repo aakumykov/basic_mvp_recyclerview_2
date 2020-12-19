@@ -25,5 +25,6 @@
     <string name="menu_interrupt">Прервать</string>
     <string name="menu_interrupt_running_action">Прервать действие</string>
     <string name="SIMPLE_LIST_default_page_title">Простой список</string>
+    <string name="SIMPLE_LIST_list_item_title">Элемент</string>
 
 </resources>
