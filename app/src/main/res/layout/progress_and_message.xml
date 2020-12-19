@@ -44,8 +44,8 @@
             android:paddingStart="8dp"
             android:textColor="@color/stackTraceColor"
             android:textSize="16sp"
-            android:visibility="gone"
-            tools:text="Стек вызовов"
+            android:visibility="visible"
+            android:text="Exception in thread main, java.lang.NullPointerException at com.example.myproject.Book.getTitle(Book.java:16) at com.example.myproject.Author.getBookTitles(Author.java:25) at com.example.myproject.Bootstrap.main(Bootstrap.java:14)"
             tools:visibility="visible" />
 
     </LinearLayout>
