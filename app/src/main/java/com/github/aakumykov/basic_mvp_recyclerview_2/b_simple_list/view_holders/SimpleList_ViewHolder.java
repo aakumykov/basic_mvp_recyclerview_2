@@ -13,6 +13,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public abstract class SimpleList_ViewHolder extends BasicMVPList_DataViewHolder {
 
@@ -43,5 +44,11 @@ public abstract class SimpleList_ViewHolder extends BasicMVPList_DataViewHolder 
     @Override
     public void displayIsHighlighted(boolean isHighLighted) {
         ViewUtils.setVisibility(highlightingOverlay, isHighLighted);
+    }
+
+
+    @OnClick(R.id.titleView)
+    void onTitleClicked() {
+        mItemClickListener.onItemClicked(this);
     }
 }

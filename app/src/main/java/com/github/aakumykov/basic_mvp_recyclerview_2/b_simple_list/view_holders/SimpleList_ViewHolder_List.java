@@ -4,9 +4,9 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-public class SimpleList_List_ViewHolder extends SimpleList_ViewHolder {
+public class SimpleList_ViewHolder_List extends SimpleList_ViewHolder {
 
-    public SimpleList_List_ViewHolder(@NonNull View itemView) {
+    public SimpleList_ViewHolder_List(@NonNull View itemView) {
         super(itemView);
     }
 

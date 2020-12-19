@@ -4,9 +4,9 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-public class SimpleList_Feed_ViewHolder extends SimpleList_ViewHolder {
+public class SimpleList_ViewHolder_Grid extends SimpleList_ViewHolder {
 
-    public SimpleList_Feed_ViewHolder(@NonNull View itemView) {
+    public SimpleList_ViewHolder_Grid(@NonNull View itemView) {
         super(itemView);
     }
 

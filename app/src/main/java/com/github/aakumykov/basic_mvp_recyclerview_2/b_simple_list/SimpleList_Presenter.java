@@ -4,6 +4,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.R;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.BasicMVPList_Presenter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_DataItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_ListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_utils.BasicMVPList_ItemsTextFilter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_DataViewHolder;
@@ -40,7 +41,9 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
     @Override
     public void onItemClicked(BasicMVPList_DataViewHolder basicDataViewHolder) {
-
+        BasicMVPList_ListItem listItem = mListView.getItem(basicDataViewHolder.getAdapterPosition());
+        BasicMVPList_DataItem dataItem = (BasicMVPList_DataItem) listItem;
+        mPageView.showToast(dataItem.getTitle());
     }
 
     @Override
@@ -50,7 +53,7 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
     @Override
     public void onLoadMoreClicked(BasicMVPList_ViewHolder basicViewHolder) {
-
+        loadMoreItems();
     }
 
     @Override
@@ -84,6 +87,20 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
                 mListView.setList(createStringsList(2, 10));
             }
         }, 1000);
+    }
+
+    private void loadMoreItems() {
+
+        mListView.hideLoadmoreItem();
+        mListView.showThrobberItem();
+
+        mPageView.runDelayed(() -> {
+                    int position2scroll = mListView.getVisibleListSize();
+                    mListView.appendList(createStringsList(10, 20));
+                    mPageView.scroll2position(position2scroll);
+                },
+                500
+        );
     }
 
     private List<BasicMVPList_ListItem> createStringsList(int minSize, int maxSize) {

@@ -15,8 +15,6 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils
 
 public class SimpleList_Adapter extends BasicMVPList_DataAdapter {
 
-    private iBasicMVP_ItemClickListener mItemClickListener;
-
     public SimpleList_Adapter(BasicViewMode defaultViewMode, iBasicMVP_ItemClickListener itemClickListener) {
         super(defaultViewMode, itemClickListener);
     }
