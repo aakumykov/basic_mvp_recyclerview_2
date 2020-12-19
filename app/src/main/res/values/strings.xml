@@ -1,5 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">basic-mvp-recyclerview-2</string>
     <string name="START_PAGE_simple_list_button">Simple list</string>
     <string name="START_PAGE_about_button">About</string>
+
+    <string name="list_item_loadmore_title">More</string>
+    <string name="menu_item_invert_selection">Invert selection</string>
+    <string name="menu_item_select_all">Select all</string>
+    <string name="menu_item_sorted_by_author">By author</string>
+    <string name="menu_item_sorted_by_date">By date</string>
+    <string name="menu_item_sorted_by_name">By name</string>
+    <string name="menu_item_clear_selection">Clear selection</string>
+    <string name="filter">Filter</string>
+    <string name="menu_item_sort">Sorting</string>
+    <string name="page_title_selected_items_count">Selected: %1$d</string>
+
 </resources>

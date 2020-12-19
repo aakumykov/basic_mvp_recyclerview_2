@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Basicmvprecyclerview2">
 
-        <activity android:name=".StartingActivity">
+        <activity android:name=".about_page.StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CreditsActivity" />
+        <activity android:name=".start_page.AboutActivity" />
 
     </application>
 

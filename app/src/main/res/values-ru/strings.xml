@@ -3,4 +3,16 @@
     <string name="app_name">basic-mvp-recyclerview-2</string>
     <string name="START_PAGE_simple_list_button">Простой список</string>
     <string name="START_PAGE_about_button">О программе</string>
+
+    <string name="list_item_loadmore_title">Ещё</string>
+    <string name="menu_item_invert_selection">Обратить выделение</string>
+    <string name="menu_item_select_all">Выбрать всё</string>
+    <string name="menu_item_sorted_by_author">По автору</string>
+    <string name="menu_item_sorted_by_date">По дате</string>
+    <string name="menu_item_sorted_by_name">По имени</string>
+    <string name="menu_item_clear_selection">Снять выделение</string>
+    <string name="filter">Фильтр</string>
+    <string name="menu_item_sort">Сортировка</string>
+    <string name="page_title_selected_items_count">Выбрано: %1$d</string>
+
 </resources>
