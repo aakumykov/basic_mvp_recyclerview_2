@@ -16,4 +16,9 @@
     <string name="page_title_selected_items_count">Выбрано: %1$d</string>
     <string name="ABOUT_PAGE_page_title">О программе</string>
 
+    <string name="menu_change_view_mode">Режим просмотра</string>
+    <string name="menu_view_mode_grid">Сеткой</string>
+    <string name="menu_view_mode_list">Списком</string>
+    <string name="menu_view_mode_feed">Лентой</string>
+
 </resources>

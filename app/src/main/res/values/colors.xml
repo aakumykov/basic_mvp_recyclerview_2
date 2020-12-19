@@ -11,4 +11,5 @@
     <color name="menu_icon_grey">#949494</color>
 
     <color name="stackTraceColor">#3F51B5</color>
+    <color name="colorErrorText">#EC407A</color>
 </resources>

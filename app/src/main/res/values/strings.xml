@@ -16,4 +16,9 @@
     <string name="page_title_selected_items_count">Selected: %1$d</string>
     <string name="ABOUT_PAGE_page_title">About</string>
 
+    <string name="menu_change_view_mode">View mode</string>
+    <string name="menu_view_mode_grid">As grid</string>
+    <string name="menu_view_mode_list">As list</string>
+    <string name="menu_view_mode_feed">As feed</string>
+
 </resources>
