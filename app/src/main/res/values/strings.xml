@@ -14,5 +14,6 @@
     <string name="filter">Filter</string>
     <string name="menu_item_sort">Sorting</string>
     <string name="page_title_selected_items_count">Selected: %1$d</string>
+    <string name="ABOUT_PAGE_page_title">About</string>
 
 </resources>

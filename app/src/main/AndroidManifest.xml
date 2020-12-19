@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".start_page.AboutActivity" />
+        <activity android:name=".start_page.AboutActivity" android:parentActivityName=".about_page.StartingActivity" />
 
     </application>
 

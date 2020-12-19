@@ -3,14 +3,14 @@ package com.github.aakumykov.basic_mvp_recyclerview_2.about_page;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.github.aakumykov.basic_mvp_recyclerview_2.BasicActivity;
+import com.github.aakumykov.basic_mvp_recyclerview_2.BMVP_BasicActivity;
 import com.github.aakumykov.basic_mvp_recyclerview_2.R;
 import com.github.aakumykov.basic_mvp_recyclerview_2.start_page.AboutActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class StartingActivity extends BasicActivity {
+public class StartingActivity extends BMVP_BasicActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
