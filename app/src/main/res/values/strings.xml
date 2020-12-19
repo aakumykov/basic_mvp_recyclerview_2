@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">basic-mvp-recyclerview-2</string>
+    <string name="START_PAGE_simple_list_button">Simple list</string>
+    <string name="START_PAGE_about_button">About</string>
+</resources>
