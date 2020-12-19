@@ -36,19 +36,21 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
     @Override
     protected void onRefreshRequested() {
-
+        super.onRefreshRequested();
+        loadList();
     }
 
     @Override
     public void onItemClicked(BasicMVPList_DataViewHolder basicDataViewHolder) {
-        BasicMVPList_ListItem listItem = mListView.getItem(basicDataViewHolder.getAdapterPosition());
-        BasicMVPList_DataItem dataItem = (BasicMVPList_DataItem) listItem;
-        mPageView.showToast(dataItem.getTitle());
+        if (mListView.isSelectionMode())
+            onSelectItemClicked(basicDataViewHolder);
+        else
+            onItemClickedReal(basicDataViewHolder);
     }
 
     @Override
     public void onItemLongClicked(BasicMVPList_DataViewHolder basicDataViewHolder) {
-
+        onSelectItemClicked(basicDataViewHolder);
     }
 
     @Override
@@ -77,6 +79,12 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
         loadList();
     }
 
+    private void onItemClickedReal(BasicMVPList_DataViewHolder dataViewHolder) {
+        BasicMVPList_ListItem listItem = mListView.getItem(dataViewHolder.getAdapterPosition());
+        BasicMVPList_DataItem dataItem = (BasicMVPList_DataItem) listItem;
+        mPageView.showToast(dataItem.getTitle());
+    }
+
     private void loadList() {
         setViewState(new RefreshingViewState());
 
@@ -96,7 +104,10 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
         mPageView.runDelayed(() -> {
                     int position2scroll = mListView.getVisibleListSize();
+
                     mListView.appendList(createStringsList(10, 20));
+
+                    updateSelectionModeMenu();
                     mPageView.scroll2position(position2scroll);
                 },
                 500

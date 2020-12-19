@@ -18,16 +18,16 @@ public class SimpleList_ViewHolderCreator extends BasicMVPList_ViewHolderCreator
 
     @Override
     public BasicMVPList_DataViewHolder createViewHolder4listMode(ViewGroup parent) {
-        return new SimpleList_ViewHolder_List(inflateItemView(parent, R.layout.basic_list_item));
+        return new SimpleList_ViewHolder_List(inflateItemView(parent, R.layout.basic_list_item_list));
     }
 
     @Override
     public BasicMVPList_DataViewHolder createViewHolder4feedMode(ViewGroup parent) {
-        return new SimpleList_ViewHolder_Feed(inflateItemView(parent, R.layout.basic_feed_item)) ;
+        return new SimpleList_ViewHolder_Feed(inflateItemView(parent, R.layout.basic_list_item_feed)) ;
     }
 
     @Override
     public BasicMVPList_DataViewHolder createViewHolder4gridMode(ViewGroup parent) {
-        return new SimpleList_ViewHolder_Grid(inflateItemView(parent, R.layout.basic_grid_item));
+        return new SimpleList_ViewHolder_Grid(inflateItemView(parent, R.layout.basic_list_item_grid));
     }
 }

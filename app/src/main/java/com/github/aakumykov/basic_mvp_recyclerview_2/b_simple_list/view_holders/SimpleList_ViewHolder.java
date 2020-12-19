@@ -14,6 +14,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public abstract class SimpleList_ViewHolder extends BasicMVPList_DataViewHolder {
 
@@ -50,5 +51,10 @@ public abstract class SimpleList_ViewHolder extends BasicMVPList_DataViewHolder 
     @OnClick(R.id.titleView)
     void onTitleClicked() {
         mItemClickListener.onItemClicked(this);
+    }
+
+    @OnLongClick(R.id.titleView)
+    void onTitleLongClicked() {
+        mItemClickListener.onItemLongClicked(this);
     }
 }

@@ -72,7 +72,7 @@ public abstract class BasicMVPList_Presenter
             setViewState(new AllItemsSelectedViewState(selectedItemsCount));
         }
         else if (0 == selectedItemsCount) {
-            setViewState(new NeutralViewState());
+            mPageView.refreshMenu();
         }
         else {
             setViewState(new ItemsSelectedViewState(selectedItemsCount));
@@ -154,7 +154,9 @@ public abstract class BasicMVPList_Presenter
             setViewState(mCurrentViewState);
     }
 
-    protected abstract void onRefreshRequested();
+    protected void onRefreshRequested() {
+        resetSelection();
+    }
 
     protected void setViewState(@NonNull iBasicViewState viewState) {
         mCurrentViewState = viewState;
@@ -270,5 +272,10 @@ public abstract class BasicMVPList_Presenter
         mCurrentViewMode = viewMode;
         mListView.setViewMode(viewMode);
         mPageView.reconfigureRecyclerView();
+    }
+
+    private void resetSelection() {
+        mListView.clearSelection();
+        mPageView.refreshMenu();
     }
 }
