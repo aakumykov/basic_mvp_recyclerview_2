@@ -12,7 +12,9 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.data_model.SimpleData;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.Simple_ListItem;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_utils.SimpleList_ItemsTextFilter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
     @Override
     protected BasicMVPList_ItemsTextFilter getItemsTextFilter() {
-        return null;
+        return new SimpleList_ItemsTextFilter();
     }
 
     @Override
@@ -83,7 +85,8 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
     private void onItemClickedReal(BasicMVPList_DataViewHolder dataViewHolder) {
         BasicMVPList_ListItem listItem = mListView.getItem(dataViewHolder.getAdapterPosition());
         BasicMVPList_DataItem dataItem = (BasicMVPList_DataItem) listItem;
-        mPageView.showToast(dataItem.getTitle());
+        SimpleData simpleData = (SimpleData) dataItem.getPayload();
+        mPageView.showToast(simpleData.getTitle());
     }
 
     private void loadList() {
@@ -96,7 +99,7 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
                 setViewState(new NeutralViewState());
                 mListView.setList(createStringsList(1, 10));
             }
-        }, 2000);
+        }, 3000);
     }
 
     private void loadMoreItems() {
@@ -107,13 +110,15 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
         mPageView.runDelayed(() -> {
                     int position2scroll = mListView.getVisibleListSize();
 
-                    int startIndex = mListView.getVisibleListSize();
+                    Simple_ListItem lastItem = (Simple_ListItem) mListView.getTailDataItem();
+                    int startIndex = ((SimpleData) lastItem.getPayload()).getNumber() + 1;
+
                     mListView.appendList(createStringsList(startIndex, 10));
 
                     updateSelectionModeMenu();
                     mPageView.scroll2position(position2scroll);
                 },
-                2000
+                1000
         );
     }
 
@@ -123,9 +128,8 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
         Random random = new Random();
 
         for (int i=startIndex; i<startIndex+random.nextInt(maxSize)+1; i++) {
-            String title = mPageView.getText(R.string.SIMPLE_LIST_list_item_title);
-            title += "-" + i;
-            list.add(new Simple_ListItem(title));
+            String title = mPageView.getText(R.string.SIMPLE_LIST_list_item_title) + "-" + i;
+            list.add(new Simple_ListItem(new SimpleData(i, title)));
         }
 
         return list;

@@ -40,7 +40,7 @@ public class BasicMVPList_ItemsFilter extends Filter {
         String filterPattern = constraint.toString().toLowerCase();
 
         BasicMVPList_DataItem basicDataItem = (BasicMVPList_DataItem) basicListItem;
-        String title = basicDataItem.getTitle();
+        String title = basicDataItem.getBasicData().getTitle();
 
         return title.toLowerCase().contains(filterPattern);
     }

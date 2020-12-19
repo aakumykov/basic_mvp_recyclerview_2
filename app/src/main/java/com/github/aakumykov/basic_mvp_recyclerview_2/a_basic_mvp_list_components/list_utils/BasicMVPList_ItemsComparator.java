@@ -116,8 +116,8 @@ public abstract class BasicMVPList_ItemsComparator implements iItemsComparator {
         BasicMVPList_DataItem dataItem1 = (BasicMVPList_DataItem) o1;
         BasicMVPList_DataItem dataItem2 = (BasicMVPList_DataItem) o2;
 
-        String title1 = dataItem1.getTitle();
-        String title2 = dataItem2.getTitle();
+        String title1 = dataItem1.getBasicData().getTitle();
+        String title2 = dataItem2.getBasicData().getTitle();
 
         if (mSortingOrder.isDirect())
             return title1.compareTo(title2);
@@ -129,8 +129,8 @@ public abstract class BasicMVPList_ItemsComparator implements iItemsComparator {
         BasicMVPList_DataItem dataItem1 = (BasicMVPList_DataItem) o1;
         BasicMVPList_DataItem dataItem2 = (BasicMVPList_DataItem) o2;
 
-        Long date1 = dataItem1.getDate();
-        Long date2 = dataItem2.getDate();
+        Long date1 = dataItem1.getBasicData().getDate();
+        Long date2 = dataItem2.getBasicData().getDate();
 
         if (mSortingOrder.isDirect())
             return date1.compareTo(date2);

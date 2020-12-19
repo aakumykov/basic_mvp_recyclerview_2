@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_DataItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_utils.BasicMVPList_ItemsTextFilter;
-import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.Simple_ListItem;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.data_model.SimpleData;
 
 public class SimpleList_ItemsTextFilter extends BasicMVPList_ItemsTextFilter {
 
@@ -13,7 +13,8 @@ public class SimpleList_ItemsTextFilter extends BasicMVPList_ItemsTextFilter {
         if ("".equals(filterPattern))
             return true;
 
-        Simple_ListItem simpleListItem = (Simple_ListItem) dataItem.getPayload();
-        return simpleListItem.getTitle().contains(filterPattern.toLowerCase());
+
+        String titleLowerCase = ((SimpleData) dataItem.getPayload()).getTitle();
+        return titleLowerCase.contains(filterPattern.toLowerCase());
     }
 }

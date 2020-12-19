@@ -31,7 +31,7 @@ public abstract class SimpleList_ViewHolder extends BasicMVPList_DataViewHolder 
     public void initialize(BasicMVPList_ListItem basicListItem) {
         BasicMVPList_DataItem dataItem = (BasicMVPList_DataItem) basicListItem;
 
-        titleView.setText(dataItem.getTitle());
+        titleView.setText(dataItem.getBasicData().getTitle());
 
         displayIsSelected(dataItem.isSelected());
         displayIsHighlighted(dataItem.isHighLighted());
