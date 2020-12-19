@@ -4,22 +4,25 @@ import androidx.annotation.NonNull;
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_DataItem;
 
-public class SimpleListItem extends BasicMVPList_DataItem {
+public class Simple_ListItem extends BasicMVPList_DataItem {
 
-    private String mTitle;
-
-    public SimpleListItem(String title) {
-        mTitle = title;
+    public Simple_ListItem(String title) {
+        setPayload(title);
     }
 
     @Override
     public String getTitle() {
-        return mTitle;
+        return (String) getPayload();
+    }
+
+    @Override
+    public Long getDate() {
+        return 0L;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return SimpleListItem.class.getSimpleName()+" { "+getTitle()+" }";
+        return Simple_ListItem.class.getSimpleName()+" { "+getTitle()+" }";
     }
 }

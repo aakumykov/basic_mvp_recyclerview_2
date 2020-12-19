@@ -12,6 +12,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewHolderBinder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewHolderCreator;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.adapter_utils.SimpleList_ViewTypeDetector;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_utils.SimpleList_ItemsComparator;
 
 public class SimpleList_Adapter extends BasicMVPList_DataAdapter {
 
@@ -36,6 +37,6 @@ public class SimpleList_Adapter extends BasicMVPList_DataAdapter {
 
     @Override
     public iItemsComparator getItemsComparator(iSortingMode sortingMode, eSortingOrder sortingOrder) {
-        return null;
+        return new SimpleList_ItemsComparator(sortingMode, sortingOrder);
     }
 }

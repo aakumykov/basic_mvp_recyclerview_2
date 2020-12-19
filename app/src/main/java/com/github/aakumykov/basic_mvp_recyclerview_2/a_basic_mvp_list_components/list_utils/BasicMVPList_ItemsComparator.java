@@ -8,7 +8,6 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iItemsComparator;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iListBottomItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iListTopItem;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortableData;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_DataItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_ListItem;
@@ -117,27 +116,21 @@ public abstract class BasicMVPList_ItemsComparator implements iItemsComparator {
         BasicMVPList_DataItem dataItem1 = (BasicMVPList_DataItem) o1;
         BasicMVPList_DataItem dataItem2 = (BasicMVPList_DataItem) o2;
 
-        iSortableData data1 = (iSortableData) dataItem1.getPayload();
-        iSortableData data2 = (iSortableData) dataItem2.getPayload();
-
-        String name1 = data1.getName();
-        String name2 = data2.getName();
+        String title1 = dataItem1.getTitle();
+        String title2 = dataItem2.getTitle();
 
         if (mSortingOrder.isDirect())
-            return name1.compareTo(name2);
+            return title1.compareTo(title2);
         else
-            return name2.compareTo(name1);
+            return title2.compareTo(title1);
     }
 
     private int sortByDate(BasicMVPList_ListItem o1, BasicMVPList_ListItem o2) {
         BasicMVPList_DataItem dataItem1 = (BasicMVPList_DataItem) o1;
         BasicMVPList_DataItem dataItem2 = (BasicMVPList_DataItem) o2;
 
-        iSortableData basicData1 = dataItem1.getBasicData();
-        iSortableData basicData2 = dataItem2.getBasicData();
-
-        Long date1 = basicData1.getDate();
-        Long date2 = basicData2.getDate();
+        Long date1 = dataItem1.getDate();
+        Long date2 = dataItem2.getDate();
 
         if (mSortingOrder.isDirect())
             return date1.compareTo(date2);

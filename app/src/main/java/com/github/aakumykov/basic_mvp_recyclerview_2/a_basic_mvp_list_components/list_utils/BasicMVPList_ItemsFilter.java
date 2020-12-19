@@ -10,6 +10,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import java.util.ArrayList;
 import java.util.List;
 
+// Этот класс - возможный образец для будущих не-текстовых фильтров.
 public class BasicMVPList_ItemsFilter extends Filter {
 
     // Интерфейсы

@@ -12,7 +12,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.SimpleListItem;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.list_items.Simple_ListItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
 
 import java.util.ArrayList;
@@ -94,9 +94,9 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             @Override
             public void run() {
                 setViewState(new NeutralViewState());
-                mListView.setList(createStringsList(2, 10));
+                mListView.setList(createStringsList(1, 10));
             }
-        }, 4000);
+        }, 2000);
     }
 
     private void loadMoreItems() {
@@ -107,24 +107,25 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
         mPageView.runDelayed(() -> {
                     int position2scroll = mListView.getVisibleListSize();
 
-                    mListView.appendList(createStringsList(10, 20));
+                    int startIndex = mListView.getVisibleListSize();
+                    mListView.appendList(createStringsList(startIndex, 10));
 
                     updateSelectionModeMenu();
                     mPageView.scroll2position(position2scroll);
                 },
-                500
+                2000
         );
     }
 
-    private List<BasicMVPList_ListItem> createStringsList(int minSize, int maxSize) {
+    private List<BasicMVPList_ListItem> createStringsList(int startIndex, int maxSize) {
 
         List<BasicMVPList_ListItem> list = new ArrayList<>();
         Random random = new Random();
 
-        for (int i=0; i<random.nextInt(maxSize)+minSize; i++) {
+        for (int i=startIndex; i<startIndex+random.nextInt(maxSize)+1; i++) {
             String title = mPageView.getText(R.string.SIMPLE_LIST_list_item_title);
-            title += "-" + random.nextInt(100);
-            list.add(new SimpleListItem(title));
+            title += "-" + i;
+            list.add(new Simple_ListItem(title));
         }
 
         return list;

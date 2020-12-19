@@ -29,7 +29,6 @@ public abstract class BasicMVPList_ItemsTextFilter implements Predicate<BasicMVP
         return false;
     }
 
-    protected abstract boolean testDataItem(@NonNull BasicMVPList_DataItem dataItem, @NonNull String filterPattern);
 
     public void setFilterPattern(String filterPattern) {
         mFilterPattern = filterPattern;
@@ -42,4 +41,8 @@ public abstract class BasicMVPList_ItemsTextFilter implements Predicate<BasicMVP
     public boolean alreadyFilteredWith(String textPattern) {
         return null != mFilterPattern && mFilterPattern.equals(textPattern);
     }
+
+
+    protected abstract boolean testDataItem(@NonNull BasicMVPList_DataItem dataItem, @NonNull String filterPattern);
+
 }

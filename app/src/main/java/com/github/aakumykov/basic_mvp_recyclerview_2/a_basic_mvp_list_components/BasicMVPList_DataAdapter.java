@@ -714,16 +714,7 @@ public abstract class BasicMVPList_DataAdapter
 
     private List<BasicMVPList_ListItem> filterListWithCurrentParams(List<BasicMVPList_ListItem> inputList) {
         if (null != mCurrentFilter)
-        {
             return SortAndFilterUtils.filterList(inputList, mCurrentFilter);
-
-            /*mCurrentItemsList.clear();
-            mCurrentItemsList.addAll(filteredList);
-
-            addLoadmoreItem(false);
-
-            notifyDataSetChanged();*/
-        }
         else
             return inputList;
     }

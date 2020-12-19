@@ -5,7 +5,10 @@ import androidx.annotation.NonNull;
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortableData;
 
-public abstract class BasicMVPList_DataItem extends BasicMVPList_ListItem {
+public abstract class BasicMVPList_DataItem
+        extends BasicMVPList_ListItem
+        implements iSortableData
+{
 
     // Своейства
     private boolean isSelected = false;
@@ -39,8 +42,11 @@ public abstract class BasicMVPList_DataItem extends BasicMVPList_ListItem {
         return (iSortableData) getPayload();
     }
 
-    // Абстрактные классы
+    @Override
     public abstract String getTitle();
+
+    @Override
+    public abstract Long getDate();
 
     @NonNull
     @Override
