@@ -34,7 +34,6 @@ public class BMVP_Activity extends AppCompatActivity implements iBMVP_Activity {
             actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-
     @Override
     public void showToast(int messageId) {
         showToast(getString(messageId));

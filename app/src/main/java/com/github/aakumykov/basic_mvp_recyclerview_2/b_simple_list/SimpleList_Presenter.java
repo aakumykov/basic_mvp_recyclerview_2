@@ -7,6 +7,8 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_DataViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_ViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
+import com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list.stubs.SimpleList_ViewStub;
 
 public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
@@ -16,12 +18,12 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
 
     @Override
     public void unbindViews() {
-
+        mPageView = new SimpleList_ViewStub();
     }
 
     @Override
     protected eSortingOrder getDefaultSortingOrderForSortingMode(iSortingMode sortingMode) {
-        return null;
+        return eSortingOrder.DIRECT;
     }
 
     @Override
@@ -55,5 +57,24 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             mPageView.closePage();
         }
         return true;
+    }
+
+
+    @Override
+    protected void onColdStart() {
+        super.onColdStart();
+
+        loadList();
+    }
+
+    private void loadList() {
+        setViewState(new RefreshingViewState());
+
+        mPageView.runDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setNeutralViewState();
+            }
+        }, 1000);
     }
 }

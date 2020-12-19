@@ -80,7 +80,6 @@ public class SimpleList_View extends BasicMVPList_View {
         clearMenu();
         addSearchView();
 
-        inflateMenu(R.menu.sort);
         addSortByNameMenu();
         makeMenuItemVisible(R.id.actionSort);
     }

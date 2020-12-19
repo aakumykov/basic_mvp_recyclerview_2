@@ -39,6 +39,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.system_config.ActivityCodes;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.BasicMVPList_Utils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.DeviceUtils;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.ImageUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.RecyclerViewUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.TextUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.ViewUtils;
@@ -587,6 +588,25 @@ public abstract class BasicMVPList_View
                 .create();
     }
 
+    protected void makeMenuItemVisible(int menuItemId) {
+        if (null != mMenu) {
+
+            MenuItem sortMenuItem = mMenu.findItem(menuItemId);
+
+            if (null != sortMenuItem) {
+
+                sortMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+                Drawable menuItemIcon = sortMenuItem.getIcon();
+
+                if (null != menuItemIcon) {
+                    Drawable drawable = menuItemIcon.mutate();
+                    ImageUtils.setDrawableColor(this, drawable, R.color.visible_menu_icon_color);
+                }
+            }
+        }
+    }
+
     private void processLoginResult() {
         refreshMenu();
     }
@@ -695,14 +715,6 @@ public abstract class BasicMVPList_View
     protected void inflateMenu(int menuResourceId) {
         if (null != mMenuInflater && null != mMenu)
             mMenuInflater.inflate(menuResourceId, mMenu);
-    }
-
-    protected void makeMenuItemVisible(int menuItemId) {
-        if (null != mMenu) {
-            MenuItem menuItem = mMenu.findItem(menuItemId);
-            if (null != menuItem)
-                menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        }
     }
 
 
