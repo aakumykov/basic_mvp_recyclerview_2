@@ -13,7 +13,6 @@ public class SimpleList_ItemsTextFilter extends BasicMVPList_ItemsTextFilter {
         if ("".equals(filterPattern))
             return true;
 
-
         String titleLowerCase = ((SimpleData) dataItem.getPayload()).getTitle();
         return titleLowerCase.contains(filterPattern.toLowerCase());
     }

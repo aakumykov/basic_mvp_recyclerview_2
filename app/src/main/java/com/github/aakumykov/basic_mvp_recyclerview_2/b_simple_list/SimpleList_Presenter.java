@@ -3,6 +3,7 @@ package com.github.aakumykov.basic_mvp_recyclerview_2.b_simple_list;
 import com.github.aakumykov.basic_mvp_recyclerview_2.R;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.BasicMVPList_Presenter;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_ListView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_DataItem;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_items.BasicMVPList_ListItem;
@@ -113,7 +114,12 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
                     Simple_ListItem lastItem = (Simple_ListItem) mListView.getTailDataItem();
                     int startIndex = ((SimpleData) lastItem.getPayload()).getNumber() + 1;
 
-                    mListView.appendList(createStringsList(startIndex, 10));
+                    mListView.appendList(createStringsList(startIndex, 10), new iBMVP_ListView.iFilterListCallback() {
+                        @Override
+                        public void onListFiltered(int allItemsCount, int addedItemsCount, int filteredOutItemsCount) {
+                            notifyAboutFilteredOutItems(allItemsCount, addedItemsCount, filteredOutItemsCount);
+                        }
+                    });
 
                     updateSelectionModeMenu();
                     mPageView.scroll2position(position2scroll);

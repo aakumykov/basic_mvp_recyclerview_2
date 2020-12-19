@@ -1,8 +1,11 @@
 package com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components;
 
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
+import com.github.aakumykov.basic_mvp_recyclerview_2.R;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.enums.eSortingOrder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_ListView;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBMVP_PageView;
@@ -12,6 +15,7 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSelectionCommandsListener;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iSortingMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.list_utils.BasicMVPList_ItemsTextFilter;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.utils.TextUtils;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_DataViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_holders.BasicMVPList_ViewHolder;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.BasicViewMode;
@@ -244,6 +248,24 @@ public abstract class BasicMVPList_Presenter
     public void onInvertSelectionClicked() {
         mListView.invertSelection();
         setViewState(new ItemsSelectedViewState(mListView.getSelectedItemsCount()));
+    }
+
+
+    protected void notifyAboutFilteredOutItems(int allItemsCount, int addedItemsCount, int filteredOutItemsCount) {
+
+        Context context = mPageView.getAppContext();
+
+        String addedCardsMsg = TextUtils.getPluralString(context, R.plurals.cards_are_added, addedItemsCount);
+        String filteredOutCardsMsg = TextUtils.getPluralString(context, R.plurals.cards_are_filtered_out, filteredOutItemsCount);
+
+        String msg = TextUtils.getText(
+                context,
+                R.string.two_words_with_new_line,
+                addedCardsMsg,
+                filteredOutCardsMsg
+        );
+
+        mPageView.showToast(msg);
     }
 
 
