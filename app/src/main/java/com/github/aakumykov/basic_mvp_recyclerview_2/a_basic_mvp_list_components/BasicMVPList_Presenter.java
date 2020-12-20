@@ -23,8 +23,8 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.GridViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_modes.ListViewMode;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.AllItemsSelectedViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ItemsSelectedViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.SomeItemsSelectedViewState;
 
 public abstract class BasicMVPList_Presenter
         implements
@@ -74,10 +74,10 @@ public abstract class BasicMVPList_Presenter
             setViewState(new AllItemsSelectedViewState(selectedItemsCount));
         }
         else if (0 == selectedItemsCount) {
-            mPageView.refreshMenu();
+            setViewState(new NeutralViewState());
         }
         else {
-            setViewState(new ItemsSelectedViewState(selectedItemsCount));
+            setViewState(new SomeItemsSelectedViewState(selectedItemsCount));
         }
     }
 
@@ -247,7 +247,7 @@ public abstract class BasicMVPList_Presenter
     @Override
     public void onInvertSelectionClicked() {
         mListView.invertSelection();
-        setViewState(new ItemsSelectedViewState(mListView.getSelectedItemsCount()));
+        setViewState(new SomeItemsSelectedViewState(mListView.getSelectedItemsCount()));
     }
 
 

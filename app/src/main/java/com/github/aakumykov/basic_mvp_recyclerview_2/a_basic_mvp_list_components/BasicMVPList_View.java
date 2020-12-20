@@ -54,11 +54,11 @@ import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.AllItemsSelectedViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.CancelableProgressViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ErrorViewState;
-import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ItemsSelectedViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ListFilteredViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.NeutralViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.ProgressViewState;
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.RefreshingViewState;
+import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.view_states.SomeItemsSelectedViewState;
 
 import butterknife.BindView;
 
@@ -236,13 +236,13 @@ public abstract class BasicMVPList_View
         else if (viewState instanceof RefreshingViewState) {
             setRefreshingViewState();
         }
-        // AllItemsSelectedViewState - частный случай ItemsSelectedViewState,
+        // AllItemsSelectedViewState - частный случай SomeItemsSelectedViewState,
         // поэтому должен идти перед ним.
         else if (viewState instanceof AllItemsSelectedViewState) {
             setAllSelectedViewState((AllItemsSelectedViewState) viewState);
         }
-        else if (viewState instanceof ItemsSelectedViewState) {
-            setItemSelectedViewState((ItemsSelectedViewState) viewState);
+        else if (viewState instanceof SomeItemsSelectedViewState) {
+            setItemSelectedViewState((SomeItemsSelectedViewState) viewState);
         }
         else if (viewState instanceof ErrorViewState) {
             setErrorViewState((ErrorViewState) viewState);
@@ -402,7 +402,7 @@ public abstract class BasicMVPList_View
         showErrorMsg(errorViewState.getMessageId(), errorViewState.getDebugMessage());
     }
 
-    protected void setItemSelectedViewState(ItemsSelectedViewState viewState) {
+    protected void setItemSelectedViewState(SomeItemsSelectedViewState viewState) {
         showSelectionMenu();
         showSelectedItemsCount(viewState.getSelectedItemsCount());
     }

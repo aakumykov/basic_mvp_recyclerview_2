@@ -3,11 +3,11 @@ package com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_component
 
 import com.github.aakumykov.basic_mvp_recyclerview_2.a_basic_mvp_list_components.interfaces.iBasicViewState;
 
-public class ItemsSelectedViewState implements iBasicViewState {
+public class SomeItemsSelectedViewState implements iBasicViewState {
 
     private int mSelectedItemsCount = -1;
 
-    public ItemsSelectedViewState(int selectedItemsCount) {
+    public SomeItemsSelectedViewState(int selectedItemsCount) {
         mSelectedItemsCount = selectedItemsCount;
     }
 
