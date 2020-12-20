@@ -98,7 +98,7 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
             @Override
             public void run() {
                 setViewState(new NeutralViewState());
-                mListView.setList(createStringsList(1, 10));
+                mListView.setList(createItemsList(1, 5, 20));
             }
         }, 3000);
     }
@@ -114,7 +114,7 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
                     Simple_ListItem lastItem = (Simple_ListItem) mListView.getTailDataItem();
                     int startIndex = ((SimpleData) lastItem.getPayload()).getNumber() + 1;
 
-                    mListView.appendList(createStringsList(startIndex, 10), new iBMVP_ListView.iFilterListCallback() {
+                    mListView.appendList(createItemsList(startIndex, 5, 20), new iBMVP_ListView.iFilterListCallback() {
                         @Override
                         public void onListFiltered(int allItemsCount, int addedItemsCount, int filteredOutItemsCount) {
                             notifyAboutFilteredOutItems(allItemsCount, addedItemsCount, filteredOutItemsCount);
@@ -128,12 +128,12 @@ public class SimpleList_Presenter extends BasicMVPList_Presenter {
         );
     }
 
-    private List<BasicMVPList_ListItem> createStringsList(int startIndex, int maxSize) {
+    private List<BasicMVPList_ListItem> createItemsList(int startIndex, int minSize, int maxSize) {
 
         List<BasicMVPList_ListItem> list = new ArrayList<>();
         Random random = new Random();
 
-        for (int i=startIndex; i<startIndex+random.nextInt(maxSize)+1; i++) {
+        for (int i=startIndex; i<startIndex+random.nextInt(maxSize)+minSize; i++) {
             String title = mPageView.getText(R.string.SIMPLE_LIST_list_item_title) + "-" + i;
             list.add(new Simple_ListItem(new SimpleData(i, title)));
         }
